@@ -5,7 +5,7 @@
 #2
 
 # arr = [int(input()),int(input()),int(input())]
-# print(*[i*i for i in arr if i>=0],sep=", ")
+# print(*[i if i>0 else i*i for i in arr],sep=", ")
 
 #3
 # R = float(input())
@@ -42,9 +42,6 @@
 
 # print(arr)
 
-# 0 == 0 and 0 == 1
-# 0 in [0,1,2,3,4,5,6,7,8] -> True
-# 9 in [0,1,2,3,4,5,6,7,8] -> False
 
 # if Y!=X and Y!=Z:
 #     if X+Y+Z<1:
@@ -84,3 +81,17 @@
 # arr.append(minn)
 # maxx = max(arr)
 # maxx =
+
+# 10
+x = int(input())
+if x > 1000:
+    x = x - (5*x/100)
+elif x > 500:
+    x = x - (3*x/100)
+print(x)
+
+
+# 14
+print("чёт" if int(input())%2 == 0 else "нечёт")
+
+

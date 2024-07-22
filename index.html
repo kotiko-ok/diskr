@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<title> СКНФ | СДНФ | Полином Жегалкина | Таблица истинности булевой функции </title>
+	<link rel="icon" type="image/svg+xml" href="img/logo.png">
+	<script src="js/jQuery.js"></script>
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar bg-primary border-bottom border-body">
+			<div class="container">
+				<a href="/" class="navbar-brand active">Калькулятор</a>
+				<a href="rules.html" class="navbar-brand">Как пользоваться калькулятором</a>
+				<a href="alg.html" class="navbar-brand">Дискретая математика</a>
+				<a href="examples.html" class="navbar-brand">примеры</a>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<h2>Построение таблицы истинности. СДНФ. СКНФ. Полином Жегалкина.</h2>
+	</div>
+	<div class="container">
+		<div class="group__input">
+			<input id="function" class="edit-text-bottom-border edit-text-bottom-border-full-width"
+				placeholder="введите функцию или её вектор" title="функция или двоичный вектор">
+			<div class="calc-btn calc-btn-inline btn btn btn-outline-primary">Построить</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="keyboard no-select">
+			<div class="fullboard">
+
+				<div id="keys" class="keys_btn open">
+					<div class="key btn btn-primary" id="or-key" title="ИЛИ"><span>∨</span></div>
+					<div class="key btn btn-primary" id="and-key" title="И"><span>∧</span></div>
+					<div class="key btn btn-primary" id="not-key" title="НЕ"><span>¬</span></div>
+					<div class="key btn btn-primary" id="xor-key" title="Исключающее ИЛИ"><span>⊕</span></div>
+					<div class="key btn btn-primary" id="implic-key" title="Импликация"><span>→</span></div>
+					<div class="key btn btn-primary" id="eq-key" title="Эквивалентность"><span>≡</span></div>
+					<div class="key btn btn-primary" id="pierce-key" title="Стрелка Пирса"><span>↓</span></div>
+					<div class="key btn btn-primary" id="schaffer-key" title="Штрих Шеффера"><span>↑</span></div>
+					<div class="key btn btn-primary" id="0-key"><span>0</span></div>
+					<div class="key btn btn-primary" id="1-key"><span>1</span></div>
+					<div class="key btn btn-primary" id="a-key"><span>a</span></div>
+					<div class="key btn btn-primary" id="b-key"><span>b</span></div>
+					<div class="key btn btn-primary" id="c-key"><span>c</span></div>
+					<div class="key btn btn-primary" id="x-key"><span>x</span></div>
+					<div class="key btn btn-primary" id="y-key"><span>y</span></div>
+					<div class="key btn btn-primary" id="z-key"><span>z</span></div>
+					<div class="key btn btn-primary"><span>(</span></div>
+					<div class="key btn btn-primary"><span>)</span></div>
+					<div class="key btn btn-primary" id="x1-key"><span>X<sub>1</sub></span></div>
+					<div class="key btn btn-primary" id="x2-key"><span>X<sub>2</sub></span></div>
+					<div class="key btn btn-primary" id="x3-key"><span>X<sub>3</sub></span></div>
+					<div class="key btn btn-primary" id="x4-key"><span>X<sub>4</sub></span></div>
+					<div class="key btn btn-primary" id="x5-key"><span>X<sub>5</sub></span></div>
+					<div class="key btn btn-primary" id="x6-key"><span>X<sub>6</sub></span></div>
+				</div>
+				<span id="keyboard-key" class="keyboard-key">
+					<span class="fa fa-keyboard-o">+</span>
+				</span>
+			</div>
+			<div class="checkboxes">
+				<div class="checkboxes-container">
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="hide-and"><span
+								class="switch-checkbox-text">Опускать знак конъюнкции</span></label>
+					</div>
+					<div>
+
+						<label class="switch-checkbox"><input type="checkbox" id="table" checked><span
+								class="switch-checkbox-text">Таблица истинности</span></label>
+					</div>
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="sknf" checked><span
+								class="switch-checkbox-text">СКНФ</span></label>
+						<span class="cap"></span>
+						<label class="switch-checkbox"><input type="checkbox" id="sdnf" checked><span
+								class="switch-checkbox-text">СДНФ</span></label>
+					</div>
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="polinom"><span
+								class="switch-checkbox-text">Полином Жегалкина</span></label>
+					</div>
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="classification"><span
+								class="switch-checkbox-text">Классификация Поста</span></label>
+					</div>
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="fictives"><span
+								class="switch-checkbox-text">Фиктивные переменные</span></label>
+					</div>
+					<div>
+						<label class="switch-checkbox"><input type="checkbox" id="solve"><span
+								class="switch-checkbox-text">С решением</span></label>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="calc-result"></div>
+		<div class="calc-solve"></div>
+		<p class="calc-statistics righted"><span class="fa fa-bar-chart"></span>Построено таблиц, форм: <span
+				id="stat-value"></span></p>
+	</div>
+	<script src="js/scrypt.js"></script>
+</body>
+
+</html>

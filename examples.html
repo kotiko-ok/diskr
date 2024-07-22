@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>примеры</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/img/logo.png">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-primary border-bottom border-body">
+            <div class="container">
+                <a href="/" class="navbar-brand">Калькулятор</a>
+                <a href="rules.html" class="navbar-brand">Как пользоваться калькулятором</a>
+                <a href="alg.html" class="navbar-brand">Дискретая математика</a>
+                <a href="examples.html" class="navbar-brand active">примеры</a>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <h2>Примеры построения различных представлений логических функций</h2>
+        <p>Построим совершенные дизъюнктивную и дизъюнктивную нормальные формы, а также полином Жегалкина для функции
+            трёх переменных F = <span class="not">¬a</span>b∨<span class="not">¬b</span>c∨ca</p>
+        <p>1. Построим таблицу истинности для функции</p>
+        <div class="scroll-block">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td class="gray"><span class="not">¬a</span></td>
+                        <td class="gray"><span class="not">¬a</span>∧b</td>
+                        <td class="gray"><span class="not">¬b</span></td>
+                        <td class="gray"><span class="not">¬b</span>∧c</td>
+                        <td class="gray"><span class="not">¬a</span>∧b∨<span class="not">¬b</span>∧c</td>
+                        <td class="gray">c∧a</td>
+                        <td class="green"><span class="not">¬a</span>∧b∨<span class="not">¬b</span>∧c∨c∧a</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="green">0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="green">1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="green">1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="green">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="green">0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="gray">1</td>
+                        <td class="green">1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="green">0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">0</td>
+                        <td class="gray">1</td>
+                        <td class="green">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h3>Построение совершенной дизъюнктивной нормальной формы:</h3>
+        <p>Найдём наборы, на которых функция принимает истинное значение: {&nbsp;0,&nbsp;0,&nbsp;1&nbsp;}
+            {&nbsp;0,&nbsp;1,&nbsp;0&nbsp;} {&nbsp;0,&nbsp;1,&nbsp;1&nbsp;} {&nbsp;1,&nbsp;0,&nbsp;1&nbsp;}
+            {&nbsp;1,&nbsp;1,&nbsp;1&nbsp;}</p>
+        <p>В соответствие найденным наборам поставим элементарные конъюнкции по всем переменным, причём если переменная
+            в наборе принимает значение 0, то она будет записана с отрицанием:</p>
+        <p>
+            K<sub>1</sub>: {&nbsp;0,&nbsp;0,&nbsp;1&nbsp;} — <span class="not">¬a</span><span class="not">¬b</span>c<br>
+            K<sub>2</sub>: {&nbsp;0,&nbsp;1,&nbsp;0&nbsp;} — <span class="not">¬a</span>b<span class="not">¬c</span><br>
+            K<sub>3</sub>: {&nbsp;0,&nbsp;1,&nbsp;1&nbsp;} — <span class="not">¬a</span>bc<br>
+            K<sub>4</sub>: {&nbsp;1,&nbsp;0,&nbsp;1&nbsp;} — a<span class="not">¬b</span>c<br>
+            K<sub>5</sub>: {&nbsp;1,&nbsp;1,&nbsp;1&nbsp;} — abc
+        </p>
+        Объединим конъюнкции с помощью дизъюнкции и получим совершенную дизъюнктивную нормальную форму:<br>
+        <div class="scroll-block">K<sub>1</sub> ∨ K<sub>2</sub> ∨ K<sub>3</sub> ∨ K<sub>4</sub> ∨ K<sub>5</sub> = <span
+                class="not">¬a</span><span class="not">¬b</span>c ∨ <span class="not">¬a</span>b<span
+                class="not">¬c</span>
+            ∨ <span class="not">¬a</span>bc ∨ a<span class="not">¬b</span>c ∨ abc</div>
+        <hr>
+        <h3>Построение совершенной конъюнктивной нормальной формы:</h3>
+        <p>Найдём наборы, на которых функция принимает ложное значение: {&nbsp;0,&nbsp;0,&nbsp;0&nbsp;}
+            {&nbsp;1,&nbsp;0,&nbsp;0&nbsp;} {&nbsp;1,&nbsp;1,&nbsp;0&nbsp;}</p>
+        <p>В соответствие найденным наборам поставим элементарные дизъюнкции по всем переменным, причём если переменная
+            в наборе принимает значение 1, то она будет записана с отрицанием:</p>
+        <p>
+            D<sub>1</sub>: {&nbsp;0,&nbsp;0,&nbsp;0&nbsp;} — a∨b∨c<br>
+            D<sub>2</sub>: {&nbsp;1,&nbsp;0,&nbsp;0&nbsp;} — <span class="not">¬a</span>∨b∨c<br>
+            D<sub>3</sub>: {&nbsp;1,&nbsp;1,&nbsp;0&nbsp;} — <span class="not">¬a</span>∨<span class="not">¬b</span>∨c
+        </p>
+        Объединим дизъюнкции с помощью конъюнкции и получим совершенную конъюнктивную нормальную форму:
+        <div class="scroll-block">D<sub>1</sub> ∧ D<sub>2</sub> ∧ D<sub>3</sub> = (a∨b∨c) ∧ (<span
+                class="not">¬a</span>∨b∨c) ∧ (<span class="not">¬a</span>∨<span class="not">¬b</span>∨c)</div>
+        <hr>
+        <h4>Построение полинома Жегалкина:</h4>
+        <p>Добавим новый столбец к таблице истинности и запишем в 1, 3, 5 и 7 строки значения из тех же строк
+            предыдущего столбца таблицы истинности, а значения в строках 2, 4, 6 и 8 сложим по модулю два со значениями
+            из соответственно 1, 3, 5 и 7 строк:</p>
+        <div class="scroll-block">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>F</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Добавим новый столбец к таблице истинности и запишем в 1 и 2, 5 и 6 строки значения из тех же строк
+            предыдущего столбца таблицы истинности, а значения в строках 3 и 4, 7 и 8 сложим по модулю два со значениями
+            из соответственно 1 и 2, 5 и 6 строк:</p>
+        <div class="scroll-block">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>F</td>
+                        <td>1</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">0</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="red">0</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Добавим новый столбец к таблице истинности и запишем в 1 2, 3 и 4 строки значения из тех же строк предыдущего
+            столбца таблицы истинности, а значения в строках 5, 6, 7 и 8 сложим по модулю два со значениями из
+            соответственно 1, 2, 3 и 4 строк:</p>
+        <div class="scroll-block">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>F</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td></td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="green">0</td>
+                        <td class="green">→</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td class="green">1</td>
+                        <td class="green">→</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="red">0</td>
+                        <td class="red"><span class="xor">⊕ 0</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">1</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="red">0</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="red">0</td>
+                        <td class="red"><span class="xor">⊕ 1</span></td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Окончательно получим такую таблицу: </p>
+        <div class="scroll-block">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>F</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Выпишем наборы, на которых получившийся вектор принимает единичное значение и запишем вместо единиц в наборах
+            имена переменных, соответствующие набору (для нулевого набора следует записать единицу): </p>
+        <p>{&nbsp;0,&nbsp;0,&nbsp;1&nbsp;} — c, {&nbsp;0,&nbsp;1,&nbsp;0&nbsp;} — b, {&nbsp;0,&nbsp;1,&nbsp;1&nbsp;} —
+            bc, {&nbsp;1,&nbsp;1,&nbsp;0&nbsp;} — ab, {&nbsp;1,&nbsp;1,&nbsp;1&nbsp;} — abc</p>
+        <p>Объединяя полученные конъюнкции с помощью операции исключающего или, получим полином Жегалкина: c⊕b⊕bc⊕ab⊕abc
+        </p>
+    </div>
+</body>
+
+</html>
